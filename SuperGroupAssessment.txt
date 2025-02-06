@@ -1,0 +1,56 @@
+Magic Potion Identifier
+
+static void Main(string[] args)
+{
+    long power = long.Parse(Console.ReadLine()!);
+
+
+    if (PerfectCube(power))
+    {
+        Console.WriteLine("YES");
+    }
+    else
+    {
+        Console.WriteLine("NO");
+    }
+}
+
+static bool PerfectCube(long n)
+{
+    long cube = (long)Math.Round(Math.Pow(n, 1.0 / 3.0));
+
+    return cube * cube * cube == n;
+}
+
+
+Sneaky outcomes
+
+static void Main()
+{
+    int[] outcomes = { 123456, 234567, 123347, 456789, 567890, 678901, 789012, 890123, 901234, 112233, 223344, 334455, 789012, 222234, 123347 };
+    int[] duplicates = FindDuplicates(outcomes);
+
+    Console.WriteLine($"Duplicates: [{duplicates[0]}, {duplicates[1]}]");
+}
+
+static int[] FindDuplicates(int[] outcomes)
+{
+    HashSet<int> seen = new HashSet<int>();
+    List<int> duplicates = new List<int>();
+
+    foreach (var outcome in outcomes)
+    {
+        if (seen.Contains(outcome))
+        {
+            duplicates.Add(outcome);
+        }
+        else
+        {
+            seen.Add(outcome);
+        }
+    }
+
+    return duplicates.ToArray();
+}
+
+
